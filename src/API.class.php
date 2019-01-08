@@ -53,7 +53,7 @@ abstract class API
 	 * @param             $request
 	 * @param Logger|null $logger created via Monolog\Monolog
 	 *
-	 * @throws Exception
+	 * @throws RuntimeException
 	 */
 	public function __construct($request, Logger $logger = null)
 	{
