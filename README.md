@@ -1,6 +1,6 @@
-# restapi-server - A simple class to expose a REST api
+# A simple class to expose a RESTful api
 
-restapi-service maps REST API calls to endpoints in protected methods in your derived class.
+`restapi-service` maps REST API calls to endpoints in protected methods in your derived class.
 In your class methods process according to the verbs and arguments of the http request.
 
 ## Installation
@@ -9,7 +9,6 @@ Install the latest version with
 ```
 $ composer require blacknell/restapi-service
 ```
-
 ## Basic Usage
 
 * Copy `example/api.php` and derive a class such as in `examples/MyAPI.class.php` into your 
