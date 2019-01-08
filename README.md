@@ -56,3 +56,6 @@ being thrown and the following JSON response.
 ```
 Your derived class should do the same for invalid verbs or arguments.
 Methods other than GET, POST, PUT or DELETE also result in an error.
+## Logging
+PSR-3 logging is supported via [monolog/monlog](https://github.com/Seldaek/monolog) by passing 
+an optional `Logger` object to the API constructor.
