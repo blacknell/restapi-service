@@ -129,6 +129,7 @@ abstract class RestAPI
 	{
 		if ((int) method_exists($this, $this->endpoint) > 0) {
 			$result = $this->{$this->endpoint}($this->args);
+			$this->logger->debug("API processed", array($this->toString(), $result));
 
 			return $this->response($result['result'], $result['code']);
 		}
