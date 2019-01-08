@@ -1,0 +1,15 @@
+{
+  "name": "blacknell/restapi-service",
+  "description": "Simple class to expose a REST api",
+  "minimum-stability": "stable",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "Paul Blacknell"
+    }
+  ],
+  "require": {
+    "monolog/monolog": "^1.24.0",
+    "ext-json": "*"
+  }
+}
