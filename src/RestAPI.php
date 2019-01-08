@@ -1,4 +1,7 @@
 <?php
+/**
+ * Copyright (c) 2019. Paul Blacknell https://github.com/blacknell
+ */
 
 namespace Blacknell\RestApiService;
 
@@ -7,7 +10,7 @@ use Monolog\Handler\NullHandler;
 
 use RuntimeException;
 
-abstract class API
+abstract class RestAPI
 {
 	/**
 	 * Property: method

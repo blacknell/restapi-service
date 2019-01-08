@@ -1,11 +1,13 @@
 <?php
+/**
+ * Copyright (c) 2019. Paul Blacknell https://github.com/blacknell
+ */
 
 require __DIR__.'/../vendor/autoload.php';
-require __DIR__.'/../src/API.class.php';
 
-use Blacknell\RestApiService\API as API;
+use Blacknell\RestApiService\RestAPI;
 
-class MyAPI extends API
+class MyAPI extends RestAPI
 {
 
 	// first all the protected functions which are exposed as REST API endpoints
