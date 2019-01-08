@@ -2,14 +2,16 @@
   "name": "blacknell/restapi-service",
   "description": "Simple class to expose a REST api",
   "minimum-stability": "stable",
-  "license": "proprietary",
+  "license": "MIT",
   "authors": [
     {
-      "name": "Paul Blacknell"
+      "name": "Paul Blacknell",
+      "homepage": "https://github.com/blacknell",
+      "role": "Developer"
     }
   ],
   "require": {
-    "monolog/monolog": "^1.24.0",
+    "monolog/monolog": "^1.24|^2.0",
     "ext-json": "*"
   }
 }

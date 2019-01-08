@@ -13,11 +13,11 @@ class MyAPI extends API
 	/**
 	 * @return array
 	 *
-	 * /home/v1/temperature/littlehampton/yesterday maps to api.php?request=temperature/littlehampton/yesterday
-	 * temperature/littlehampton/yesterday
+	 * /home/v1/daylight/littlehampton/yesterday maps to api.php?request=daylight/littlehampton/yesterday
+	 * daylight   /littlehampton/yesterday
 	 * endpoint   /verb         /args[0]   /args[1]
 	 */
-	protected function temperature()
+	protected function daylight()
 	{
 
 		if ($this->method == 'GET') {
