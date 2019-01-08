@@ -1,7 +1,7 @@
 # restapi-server - A simple class to expose a REST api
 
 restapi-service maps REST API calls to endpoints in protected methods in your derived class.
-In your class methods to call out according to the verbs and arguments of the http request.
+In your class methods process according to the verbs and arguments of the http request.
 
 ## Installation
 
@@ -16,11 +16,10 @@ $ composer require blacknell/restapi-service
 web server directory
 * Configure a `.htaccess` file to rewrite your RESTful call to your class
 
-For example, `https://yourserver/myapi/v1/daylight/littlehampton/yesterday` maps to
- `https://yourserver/myapi/v1/api.php?request=daylight/littlehampton/yesterday`
-
 ## Web Server configuration
 
+For example, `https://yourserver/myapi/v1/daylight/littlehampton/yesterday` maps to
+ `https://yourserver/myapi/v1/api.php?request=daylight/littlehampton/yesterday`
 ```
 <IfModule mod_rewrite.c>
     RewriteEngine On
@@ -28,8 +27,9 @@ For example, `https://yourserver/myapi/v1/daylight/littlehampton/yesterday` maps
 </IfModule>
 ```
 
-## Sample call
-`https://yourserver/myapi/v1/daylight/littlehampton/yesterday` generates the following JSON output
+## Sample code
+See [example/MyAPI.class.php](https://github.com/blacknell/restapi-service/blob/master/example/MyAPI.class.php)
+to see how `https://yourserver/myapi/v1/daylight/littlehampton/yesterday` generates the following JSON output
 ```
 {
     "description": "Between sunrise and sunset yesterday",
