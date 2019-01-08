@@ -58,7 +58,7 @@ abstract class RestAPI
 	 *
 	 * @throws RuntimeException
 	 */
-	public function __construct($request, Logger $logger = null)
+	public function __construct($request, \Monolog\Logger $logger = null)
 	{
 		if (isset($logger) && $logger) {
 			$this->logger = $logger;
