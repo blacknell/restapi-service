@@ -6,7 +6,7 @@ require "MyAPI.class.php";
 use Monolog\Logger;
 use Monolog\Handler\ErrorLogHandler;
 
-$log=new Logger('restapi-test');
+$log = new Logger('restapi-test');
 $logHandler = new ErrorLogHandler();
 $log->pushHandler($logHandler);
 
