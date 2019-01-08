@@ -46,8 +46,7 @@ to see how `https://yourserver/myapi/v1/daylight/littlehampton/yesterday` genera
 }
 ```
 ## Error Handling
-Any endpoint not mapping to a protected function in your derived class results in a `RuntimeException`
-being thrown and the following JSON response.
+Any endpoint not mapping to a protected function in your derived class results in the following JSON response.
 ```
 {
     "error": "No endpoint",
