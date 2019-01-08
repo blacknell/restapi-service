@@ -10,6 +10,17 @@ use Blacknell\RestApiService\RestAPI;
 class MyAPI extends RestAPI
 {
 
+	/**
+	 * MyAPI constructor.
+	 *
+	 * @param                      $request
+	 * @param \Monolog\Logger|null $logger
+	 */
+	public function __construct($request, \Monolog\Logger $logger = null)
+	{
+		parent::__construct($request, $logger);
+	}
+
 	// first all the protected functions which are exposed as REST API endpoints
 
 	/**

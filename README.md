@@ -44,6 +44,18 @@ to see how `https://yourserver/myapi/v1/daylight/littlehampton/yesterday` genera
     }
 }
 ```
+## Additional Concepts
+#### Cross-Origin Resource Sharing (CORS)
+Additional headers can be added to the constructor of your derived class **before** calling the parent constructor.
+For example, to allow a client on a website http://myclient.com to access your API add this header call.
+```
+	public function __construct($request, \Monolog\Logger $logger = null)
+	{
+		header('Access-Control-Allow-Origin: http://myclient.com');
+		parent::__construct($request, $logger);
+	}
+
+```
 ## Error Handling
 Any endpoint not mapping to a protected function in your derived class results in the following JSON response.
 ```
