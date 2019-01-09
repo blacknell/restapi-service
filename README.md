@@ -1,4 +1,5 @@
 # A simple class to expose a RESTful api
+[![Build Status](https://travis-ci.org/blacknell/restapi-service.svg?branch=master)](https://travis-ci.org/blacknell/restapi-service)
 
 `restapi-service` maps REST API calls to endpoints in protected methods in your derived class.
 In your class methods process according to the verbs and arguments of the http request.
