@@ -18,7 +18,7 @@ try {
 	echo $API->processAPI();
 }
 catch (RuntimeException $e) {
-	header("HTTP/1.1 " . $e->getMessage() . " " . $e->getCode());
+	header("HTTP/1.1 " . $e->getCode() . " " . $e->getMessage());
 	echo json_encode(['error' => $e->getMessage(), 'code' => $e->getCode()]);
 }
 
