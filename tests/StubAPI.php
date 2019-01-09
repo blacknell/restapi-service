@@ -26,13 +26,13 @@ class MyStubAPI extends RestAPI
 
 			}
 			catch (OutOfBoundsException $e) {
-				$this->logger->error($e->getMessage(), $this->toString());
+				$this->logger->error($e->getMessage(), $this->toObject());
 				$this->logger->error($e->getTraceAsString());
 
 				return array("result" => ['error' => $e->getMessage(), 'code' => $e->getCode()], "code" => $e->getCode());
 			}
 			catch (Exception $e) {
-				$this->logger->error($e->getMessage(), $this->toString());
+				$this->logger->error($e->getMessage(), $this->toObject());
 				$this->logger->error($e->getTraceAsString());
 
 				return array("result" => ['error' => $e->getMessage(), 'code' => 400], "code" => 400);

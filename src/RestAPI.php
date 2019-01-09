@@ -54,7 +54,7 @@ abstract class RestAPI
 	 * API constructor.
 	 *
 	 * @param             $request
-	 * @param Logger|null $logger created via Monolog\Monolog
+	 * @param \Monolog\Logger|null $logger created via Monolog\Monolog
 	 *
 	 * @throws RuntimeException
 	 */
@@ -103,16 +103,18 @@ abstract class RestAPI
 				$this->file = file_get_contents("php://input");
 				break;
 			default:
-				$this->logger->error("Method Not Allowed", $this->toString());
+				$this->logger->error("Method Not Allowed", $this->toObject());
 				throw new RuntimeException("Method Not Allowed", 405);
 				break;
 		}
 	}
 
 	/**
+	 * Returns the request components as an object
+	 * 
 	 * @return array
 	 */
-	protected function toString()
+	protected function toObject()
 	{
 		return [
 			'method'=> $this->method,
@@ -129,11 +131,11 @@ abstract class RestAPI
 	{
 		if ((int) method_exists($this, $this->endpoint) > 0) {
 			$result = $this->{$this->endpoint}($this->args);
-			$this->logger->debug("API processed", array($this->toString(), $result));
+			$this->logger->debug("API processed", array($this->toObject(), $result));
 
 			return $this->response($result['result'], $result['code']);
 		}
-		$this->logger->error("No endpoint: $this->endpoint", $this->toString());
+		$this->logger->error("No endpoint: $this->endpoint", $this->toObject());
 
 		return $this->response(['error' => "No endpoint", 'code' => 404], 404);
 	}
