@@ -1,5 +1,8 @@
 # A simple class to expose a RESTful api
 [![Build Status](https://travis-ci.org/blacknell/restapi-service.svg?branch=master)](https://travis-ci.org/blacknell/restapi-service)
+[![Latest Stable Version](https://poser.pugx.org/blacknell/restapi-service/v/stable)](https://packagist.org/packages/blacknell/restapi-service)
+[![Latest Unstable Version](https://poser.pugx.org/blacknell/restapi-service/v/unstable)](https://packagist.org/packages/blacknell/restapi-service)
+[![License](https://poser.pugx.org/blacknell/restapi-service/license)](https://packagist.org/packages/blacknell/restapi-service)
 
 `restapi-service` maps REST API calls to endpoints in protected methods in your derived class.
 In your class methods process according to the verbs and arguments of the http request.
