@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  ~ Copyright (c) 2019. Paul Blacknell https://github.com/blacknell
+  -->
+
+<phpunit bootstrap="bootstrap.php" backupGlobals="false" colors="true" backupStaticAttributes="false" verbose="true">
+    <testsuites>
+        <testsuite name="unit">
+            <directory>unit</directory>
+        </testsuite>
+    </testsuites>
+    <filter>
+        <whitelist processUncoveredFilesFromWhitelist="false">
+            <directory suffix=".php">../src/</directory>
+        </whitelist>
+    </filter>
+</phpunit>
