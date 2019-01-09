@@ -147,11 +147,11 @@ abstract class RestAPI
 	 */
 	private function response($data, $status = 200)
 	{
-		header("HTTP/1.1 " . $status . " " . $this->requestStatus($status));
+		@header("HTTP/1.1 " . $status . " " . $this->requestStatus($status));
 		if (is_object($data))
 			return $data;
 		else
-			return json_encode($data, JSON_PRETTY_PRINT | JSON_FORCE_OBJECT);
+			return json_encode($data);
 	}
 
 	/**
