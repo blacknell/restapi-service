@@ -111,7 +111,7 @@ abstract class RestAPI
 
 	/**
 	 * Returns the request components as an object
-	 * 
+	 *
 	 * @return array
 	 */
 	protected function toObject()
