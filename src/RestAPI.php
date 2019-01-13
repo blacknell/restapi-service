@@ -86,6 +86,7 @@ abstract class RestAPI
 				$this->method = 'PUT';
 			}
 			else {
+				$this->logger->notice("Unexpected Header", $this->toObject());
 				throw new RuntimeException("Unexpected Header", 400);
 			}
 		}
@@ -103,10 +104,25 @@ abstract class RestAPI
 				$this->file = file_get_contents("php://input");
 				break;
 			default:
-				$this->logger->error("Method Not Allowed", $this->toObject());
+				$this->logger->notice("Method Not Allowed", $this->toObject());
 				throw new RuntimeException("Method Not Allowed", 405);
 				break;
 		}
+
+		if( !$this->isAuthenticated()) {
+			$this->logger->warning("Unauthorized", $this->toObject());
+			throw new RuntimeException("Unauthorized", 401);
+		}
+	}
+
+	/**
+	 * Overide this method to consider whether the request is authenticated
+	 *
+	 * @return bool true if authenticated
+	 */
+	protected function isAuthenticated()
+	{
+		return true;
 	}
 
 	/**
@@ -186,6 +202,7 @@ abstract class RestAPI
 		$status = array(
 			200 => 'OK',
 			400 => 'Bad Request',
+			401 => 'Unauthorized',
 			403 => 'Forbidden',
 			404 => 'Not Found',
 			405 => 'Method Not Allowed',
