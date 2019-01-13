@@ -60,6 +60,21 @@ For example, to allow a client on a website http://myclient.com to access your A
 	}
 
 ```
+#### Authentication
+Overide `RestAPI::isAuthenticated()` to handle authentication and only return `true` if the request is authorised.
+As a basic example, force the request to include a header such as `Authentication-Token: xxx` and test this in your derived class.
+```
+	protected function isAuthenticated()
+	{
+		$headers=getallheaders();
+		if($headers['Authentication-Token'] !== 'xxx') {
+			return false;
+		} else {
+			return parent::isAuthenticated();
+		}
+	}
+```
+
 ## Error Handling
 Any endpoint not mapping to a protected function in your derived class results in the following JSON response.
 ```
