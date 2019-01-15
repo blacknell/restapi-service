@@ -62,7 +62,7 @@ For example, to allow a client on a website http://myclient.com to access your A
 ```
 #### Authentication
 Overide `RestAPI::isAuthenticated()` to handle authentication and only return `true` if the request is authorised.
-As a basic example, force the request to include a header such as `Authentication-Token: xxx` and test this in your derived class.
+As a basic example, you could enforce a request to include a header such as `Authentication-Token: xxx` and test this in your derived class.
 ```
 	protected function isAuthenticated()
 	{
