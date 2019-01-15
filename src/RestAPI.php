@@ -94,7 +94,7 @@ abstract class RestAPI
 		switch ($this->method) {
 			case 'DELETE':
 			case 'POST':
-				$this->request = $this->cleanInputs($_POST);
+				$this->request = $this->cleanInputs(file_get_contents("php://input"));
 				break;
 			case 'GET':
 				$this->request = $this->cleanInputs($_GET);

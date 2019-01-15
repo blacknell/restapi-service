@@ -45,4 +45,36 @@ class MyStubAPI extends RestAPI
 		}
 	}
 
+	protected function stubPost()
+	{
+
+		if ($this->method == 'POST') {
+
+			try {
+
+				$obj = $this->request;
+
+				return array("result" => $obj, "code" => 200);
+
+			}
+			catch (OutOfBoundsException $e) {
+				$this->logger->error($e->getMessage(), $this->toObject());
+				$this->logger->error($e->getTraceAsString());
+
+				return array("result" => ['error' => $e->getMessage(), 'code' => $e->getCode()], "code" => $e->getCode());
+			}
+			catch (Exception $e) {
+				$this->logger->error($e->getMessage(), $this->toObject());
+				$this->logger->error($e->getTraceAsString());
+
+				return array("result" => ['error' => $e->getMessage(), 'code' => 400], "code" => 400);
+			}
+		}
+		else {
+			header("Allow: GET");
+
+			return array("result" => ['error' => "Only accepts POST requests", 'code' => 405], "code" => 405);
+		}
+	}
+
 }

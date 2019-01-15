@@ -13,16 +13,14 @@ use MyStubAPI;
 class RestAPITest extends TestCase
 {
 
-	public function testProcessAPI()
+	public function testProcessGet()
 	{
 		$_REQUEST['request']='stubGet';
 		$_SERVER['REQUEST_METHOD']='GET';
-
 		$api = new MyStubAPI($_REQUEST['request']);
 		$actualResult=$api->processAPI();
-
 		$expectedResult = '"{\"answer\":5}"';
-
-		$this->assertJsonStringEqualsJsonString('"{\"answer\":5}"', json_encode($actualResult));
+		$this->assertJsonStringEqualsJsonString($expectedResult, json_encode($actualResult));
 	}
+
 }
