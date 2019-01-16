@@ -110,7 +110,7 @@ abstract class RestAPI
 		}
 
 		if( !$this->isAuthenticated()) {
-			$this->logger->warning("Unauthorized", $this->toObject());
+			$this->logger->warning("Authentication failed", $this->toObject());
 			throw new RuntimeException("Unauthorized", 401);
 		}
 	}
@@ -137,6 +137,7 @@ abstract class RestAPI
 			'endpoint'=> $this->endpoint,
 			'verb'=> $this->verb,
 			'args'=> $this->args,
+			'remote_addr' => $_SERVER['REMOTE_ADDR'],
 		];
 	}
 
