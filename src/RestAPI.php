@@ -137,7 +137,7 @@ abstract class RestAPI
 			'endpoint'=> $this->endpoint,
 			'verb'=> $this->verb,
 			'args'=> $this->args,
-			'remote_addr' => $_SERVER['REMOTE_ADDR'],
+			'remote_addr' => isset($_SERVER['REMOTE_ADDR']) ? $_SERVER['REMOTE_ADDR'] : '',
 		];
 	}
 
