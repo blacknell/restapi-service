@@ -92,6 +92,7 @@ abstract class RestAPI
 		}
 
 		switch ($this->method) {
+			case 'OPTIONS':
 			case 'DELETE':
 			case 'POST':
 				$this->request = $this->cleanInputs(file_get_contents("php://input"));
