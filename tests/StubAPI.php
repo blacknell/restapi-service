@@ -8,73 +8,73 @@ use Blacknell\RestApiService\RestAPI;
 class MyStubAPI extends RestAPI
 {
 
-	public function __construct($request, \Monolog\Logger $logger = null)
-	{
-		parent::__construct($request, $logger);
-	}
+    public function __construct($request, \Monolog\Logger $logger = null)
+    {
+        parent::__construct($request, $logger);
+    }
 
-	protected function stubGet()
-	{
+    protected function stubGet()
+    {
 
-		if ($this->method == 'GET') {
+        if ($this->method == 'GET') {
 
-			try {
+            try {
 
-				$obj = ['answer' => 5];
+                $obj = ['answer' => 5];
 
-				return array("result" => $obj, "code" => 200);
+                return array("result" => $obj, "code" => 200);
 
-			}
-			catch (OutOfBoundsException $e) {
-				$this->logger->error($e->getMessage(), $this->toObject());
-				$this->logger->error($e->getTraceAsString());
+            }
+            catch (OutOfBoundsException $e) {
+                $this->logger->error($e->getMessage(), $this->toObject());
+                $this->logger->error($e->getTraceAsString());
 
-				return array("result" => ['error' => $e->getMessage(), 'code' => $e->getCode()], "code" => $e->getCode());
-			}
-			catch (Exception $e) {
-				$this->logger->error($e->getMessage(), $this->toObject());
-				$this->logger->error($e->getTraceAsString());
+                return array("result" => ['error' => $e->getMessage(), 'code' => $e->getCode()], "code" => $e->getCode());
+            }
+            catch (Exception $e) {
+                $this->logger->error($e->getMessage(), $this->toObject());
+                $this->logger->error($e->getTraceAsString());
 
-				return array("result" => ['error' => $e->getMessage(), 'code' => 400], "code" => 400);
-			}
-		}
-		else {
-			header("Allow: GET");
+                return array("result" => ['error' => $e->getMessage(), 'code' => 400], "code" => 400);
+            }
+        }
+        else {
+            header("Allow: GET");
 
-			return array("result" => ['error' => "Only accepts GET requests", 'code' => 405], "code" => 405);
-		}
-	}
+            return array("result" => ['error' => "Only accepts GET requests", 'code' => 405], "code" => 405);
+        }
+    }
 
-	protected function stubPost()
-	{
+    protected function stubPost()
+    {
 
-		if ($this->method == 'POST') {
+        if ($this->method == 'POST') {
 
-			try {
+            try {
 
-				$obj = $this->request;
+                $obj = $this->request;
 
-				return array("result" => $obj, "code" => 200);
+                return array("result" => $obj, "code" => 200);
 
-			}
-			catch (OutOfBoundsException $e) {
-				$this->logger->error($e->getMessage(), $this->toObject());
-				$this->logger->error($e->getTraceAsString());
+            }
+            catch (OutOfBoundsException $e) {
+                $this->logger->error($e->getMessage(), $this->toObject());
+                $this->logger->error($e->getTraceAsString());
 
-				return array("result" => ['error' => $e->getMessage(), 'code' => $e->getCode()], "code" => $e->getCode());
-			}
-			catch (Exception $e) {
-				$this->logger->error($e->getMessage(), $this->toObject());
-				$this->logger->error($e->getTraceAsString());
+                return array("result" => ['error' => $e->getMessage(), 'code' => $e->getCode()], "code" => $e->getCode());
+            }
+            catch (Exception $e) {
+                $this->logger->error($e->getMessage(), $this->toObject());
+                $this->logger->error($e->getTraceAsString());
 
-				return array("result" => ['error' => $e->getMessage(), 'code' => 400], "code" => 400);
-			}
-		}
-		else {
-			header("Allow: GET");
+                return array("result" => ['error' => $e->getMessage(), 'code' => 400], "code" => 400);
+            }
+        }
+        else {
+            header("Allow: GET");
 
-			return array("result" => ['error' => "Only accepts POST requests", 'code' => 405], "code" => 405);
-		}
-	}
+            return array("result" => ['error' => "Only accepts POST requests", 'code' => 405], "code" => 405);
+        }
+    }
 
 }

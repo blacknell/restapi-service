@@ -14,12 +14,12 @@ $logHandler = new ErrorLogHandler();
 $log->pushHandler($logHandler);
 
 try {
-	$API = new MyAPI($_REQUEST['request'], $log);
-	echo $API->processAPI();
+    $API = new MyAPI($_REQUEST['request'], $log);
+    echo $API->processAPI();
 }
 catch (RuntimeException $e) {
-	header("HTTP/1.1 " . $e->getCode() . " " . $e->getMessage());
-	echo json_encode(['error' => $e->getMessage(), 'code' => $e->getCode()]);
+    header("HTTP/1.1 " . $e->getCode() . " " . $e->getMessage());
+    echo json_encode(['error' => $e->getMessage(), 'code' => $e->getCode()]);
 }
 
 //warning - do not let any output after this closing brace
