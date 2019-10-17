@@ -1,6 +1,5 @@
 .DS_Store
 .idea/*
 vendor/*
-composer.lock
 .php_cs.cache
 composer.phar

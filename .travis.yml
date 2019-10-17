@@ -21,6 +21,11 @@ install:
 
 script:
   - phpunit -c tests/build.xml
+      - stage: Code style
+      php: 7.2
+      script:
+        - ./vendor/bin/php-cs-fixer fix src --ansi --dry-run --diff --rules=-single_blank_line_at_eof
+        - ./vendor/bin/phpcs --report-width=200 src/ --ignore=samples/Header.php --standard=PSR1 -n
 
 notifications:
   on_success: never
