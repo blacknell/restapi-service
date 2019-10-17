@@ -58,7 +58,7 @@ abstract class RestAPI
      *
      * @throws RuntimeException
      */
-    public function __construct($request, \Monolog\Logger $logger = null)
+    public function __construct($request, \Monolog\Logger $logger = null, $bUnitTestMode = false)
     {
         if (isset($logger) && $logger) {
             $this->logger = $logger;
@@ -95,24 +95,23 @@ abstract class RestAPI
             case 'OPTIONS':
             case 'DELETE':
             case 'POST':
-                $this->request = $this->cleanInputs(file_get_contents("php://input"));
+                $this->request = $bUnitTestMode ? $this->cleanInputs($_POST) : $this->cleanInputs(file_get_contents("php://input"));
                 break;
             case 'GET':
                 $this->request = $this->cleanInputs($_GET);
                 break;
             case 'PUT':
                 $this->request = $this->cleanInputs($_GET);
-                $this->file = file_get_contents("php://input");
+                $this->file = $bUnitTestMode ? $this->cleanInputs($_POST) : $this->cleanInputs(file_get_contents("php://input"));
                 break;
             default:
                 $this->logger->notice("Method Not Allowed", $this->toObject());
                 throw new RuntimeException("Method Not Allowed", 405);
-                break;
         }
 
         if (!$this->isAuthenticated()) {
             $this->logger->warning("Authentication failed", $this->toObject());
-            throw new RuntimeException("Unauthorized", 401);
+            throw new RuntimeException($this->requestStatus(401), 401);
         }
     }
 
