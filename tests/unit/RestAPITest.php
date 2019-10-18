@@ -7,7 +7,7 @@ namespace Blacknell\RestApiService;
 
 use PHPUnit\Framework\TestCase;
 use Monolog\Logger;
-use Monolog\Handler\NoopHandler;
+use Monolog\Handler\NullHandler;
 
 require __DIR__ . '/../StubAPI.php';
 
@@ -19,7 +19,7 @@ class RestAPITest extends TestCase
     public function testProcessGet()
     {
         $log = new Logger('restapi-test');
-        $logHandler = new NoopHandler();
+        $logHandler = new NullHandler();
         $log->pushHandler($logHandler);
 
         $_REQUEST['request'] = 'stubGet/ggg/hhh';
