@@ -106,12 +106,12 @@ abstract class RestAPI
                 $this->file = $bUnitTestMode ? $this->cleanInputs($_POST) : $this->cleanInputs(file_get_contents("php://input"));
                 break;
             default:
-                $this->logger->notice("Method Not Allowed", $this->toObject());
-                throw new RuntimeException("Method Not Allowed", 405);
+                $this->logger->notice($this->requestStatus(405), $this->toObject());
+                throw new RuntimeException($this->requestStatus(405), 405);
         }
 
         if (!$this->isAuthenticated()) {
-            $this->logger->warning("Authentication failed", $this->toObject());
+            $this->logger->warning($this->requestStatus(401), $this->toObject());
             throw new RuntimeException($this->requestStatus(401), 401);
         }
     }
@@ -205,12 +205,17 @@ abstract class RestAPI
             200 => 'OK',
             201 => 'Created',
             202 => 'Accepted',
+            204 => 'No Content',
             400 => 'Bad Request',
             401 => 'Unauthorized',
             403 => 'Forbidden',
             404 => 'Not Found',
             405 => 'Method Not Allowed',
+            406 => 'Not Acceptable',
+            412 => 'Precondition Failed',
+            415 => 'Unsupported Media Type',
             500 => 'Internal Server Error',
+            501 => 'Not Implemented',
         );
 
         return ($status[$code]) ? $status[$code] : $status[500];
