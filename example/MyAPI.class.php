@@ -89,14 +89,12 @@ class MyAPI extends RestAPI
 
                 return array("result" => $obj, "code" => 200);
 
-            }
-            catch (OutOfBoundsException $e) {
+            } catch (OutOfBoundsException $e) {
                 $this->logger->error($e->getMessage(), $this->toObject());
                 $this->logger->error($e->getTraceAsString());
 
                 return array("result" => ['error' => $e->getMessage(), 'code' => $e->getCode()], "code" => $e->getCode());
-            }
-            catch (Exception $e) {
+            } catch (Exception $e) {
                 $this->logger->error($e->getMessage(), $this->toObject());
                 $this->logger->error($e->getTraceAsString());
 

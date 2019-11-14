@@ -16,8 +16,7 @@ $log->pushHandler($logHandler);
 try {
     $API = new MyAPI($_REQUEST['request'], $log);
     echo $API->processAPI();
-}
-catch (RuntimeException $e) {
+} catch (RuntimeException $e) {
     http_response_code($e->getCode());
 }
 
