@@ -37,7 +37,7 @@ abstract class RestAPI
      * case, an integer ID for the resource. eg: /<endpoint>/<verb>/<arg0>/<arg1>
      * or /<endpoint>/<arg0>
      */
-    protected $args = Array();
+    protected $args = array();
 
     /**
      * Property: file
@@ -55,6 +55,7 @@ abstract class RestAPI
      *
      * @param                      $request
      * @param \Monolog\Logger|null $logger created via Monolog\Monolog
+     * @param                      $bUnitTestMode
      *
      * @throws RuntimeException
      */
@@ -82,7 +83,7 @@ abstract class RestAPI
             if ($_SERVER['HTTP_X_HTTP_METHOD'] == 'DELETE') {
                 $this->method = 'DELETE';
             }
-            else if ($_SERVER['HTTP_X_HTTP_METHOD'] == 'PUT') {
+            elseif ($_SERVER['HTTP_X_HTTP_METHOD'] == 'PUT') {
                 $this->method = 'PUT';
             }
             else {
