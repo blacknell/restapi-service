@@ -149,6 +149,10 @@ abstract class RestAPI
     {
         if ((int) method_exists($this, $this->endpoint) > 0) {
             $result = $this->{$this->endpoint}($this->args);
+            // if not handling debug logs then omits results in INFO
+            if (!$this->logger->isHandling(\Monolog\Logger::DEBUG)) {
+                $this->logger->info("API processed", array($this->toObject()));
+            }
             $this->logger->debug("API processed", array($this->toObject(), $result));
 
             return $this->response($result['result'], $result['code']);
