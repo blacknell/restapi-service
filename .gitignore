@@ -3,3 +3,4 @@
 vendor/*
 .php_cs.cache
 composer.phar
+tests/.phpunit.result.cache
