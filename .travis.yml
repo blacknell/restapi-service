@@ -5,7 +5,6 @@ matrix:
     - php: hhvm
       env: PHP_VERSION=7.0.1
     - php: nightly
-    - php: 8.0
   include:
     - php: 7.3
     - php: 7.4
