@@ -40,6 +40,14 @@ abstract class RestAPI
     protected $args = array();
 
     /**
+     * Property: request
+     * The cleaned request input: the query string for GET and PUT, the body
+     * for POST, DELETE and OPTIONS. Declared so subclasses don't get a dynamic
+     * property (deprecated from PHP 8.2).
+     */
+    protected $request = null;
+
+    /**
      * Property: file
      * Stores the input of the PUT request
      */
@@ -59,7 +67,7 @@ abstract class RestAPI
      *
      * @throws RuntimeException
      */
-    public function __construct($request, \Monolog\Logger $logger = null, $bUnitTestMode = false)
+    public function __construct($request, ?\Monolog\Logger $logger = null, $bUnitTestMode = false)
     {
         if (isset($logger) && $logger) {
             $this->logger = $logger;

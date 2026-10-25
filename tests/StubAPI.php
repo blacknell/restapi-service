@@ -8,7 +8,7 @@ use Blacknell\RestApiService\RestAPI;
 class MyStubAPI extends RestAPI
 {
 
-    public function __construct($request, \Monolog\Logger $logger = null)
+    public function __construct($request, ?\Monolog\Logger $logger = null)
     {
         parent::__construct($request, $logger, true);
     }
@@ -138,7 +138,7 @@ class MyStubAPI extends RestAPI
 
 class MyStubAPIAuthenticated extends MyStubAPI
 {
-    public function __construct($request, \Monolog\Logger $logger = null)
+    public function __construct($request, ?\Monolog\Logger $logger = null)
     {
         parent::__construct($request, $logger);
     }
